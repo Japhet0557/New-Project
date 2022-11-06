@@ -1,0 +1,43 @@
+$primary: #5964E0;
+$secondary: #19202D;
+$success: #6E8098;
+$body: #9DAEC2;
+$muted: #F4F6F8;
+
+@import '../node_modules/bootstrap/scss/functions';
+@import '../node_modules/bootstrap/scss/variables';
+@import '../node_modules/bootstrap/scss/maps';
+@import '../node_modules/bootstrap/scss/utilities';
+
+
+$custom-theme-colors: (
+    "lightpurple": #939BF4,
+    "lightgrey": #F4F6F8,
+    "midark": #19202D,
+    "darkgrey": #6E8098,
+    "grey": #9DAEC2
+);
+
+$theme-colors: map-merge($custom-theme-colors, $theme-colors);
+
+
+$utilities: (
+    "img-bgcolor": (
+        property: background-image,
+        class: bgcover,
+        responsive: true,
+        values: (
+            "img1": url("../assets/logos/bg-pattern-header.svg")
+        )
+    ),
+    
+
+);
+
+// import Bootstrap
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+
+:root {
+    --bs-body-font-family: 'Kumbh Sans', sans-serif;
+};

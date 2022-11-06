@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/main.min.css">
+    
+</head>
+<body>
+    <!--Header container-->
+    <div class="container-fluid bgcover-img1 d-block d-sm-block d-md-none">
+        <div class="d-flex d-row pb-5 pt-4">
+            <div class="col-8 col-md-10 col-lg-10"><img src="./assets/logos/logo.svg" alt="logo"></div>
+            <div class="col-4 col-sm-6 col-md-2 col-lg-2">
+                <div class="d-flex d-row">
+                    <div class="col-4 col-md-4 col-lg-4 text-center"><img src="./assets/logos/icon-sun.svg" alt="light-mode"></div>
+                    <div class="col-5">
+                        <div class="form-check form-switch">
+                            <input id="switch" class="form-check-input border" type="checkbox" role="switch" id="flexSwitchCheckChecked" style="width: 48px; height: 24px;">
+                        </div>
+                    </div>
+                    <div class="col-3 col-md-3 col-lg-3 text-center"><img src="./assets/logos/icon-moon.svg" alt="dark-mode"></div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bgcover-img1 d-none d-md-block d-lg-block d-xl-block" style="border-bottom-left-radius: 75px;">
+        <div class="d-flex d-row pb-5 pt-4 px-md-4 px-lg-5 mx-lg-3">
+            <div class="col-8 col-md-10 col-lg-10"><img src="./assets/logos/logo.svg" alt="logo"></div>
+            <div class="col-4 col-md-2 col-lg-2">
+                <div class="d-flex d-row">
+                    <div class="col-md-4 col-lg-4 text-center"><img src="./assets/logos/icon-sun.svg" alt="light-mode"></div>
+                    <div class="col-md-5 col-lg-4 ps-lg-2">
+                        <div class="form-check form-switch">
+                            <input id="switch" class="form-check-input border" type="checkbox" role="switch" id="flexSwitchCheckChecked" style="width: 48px; height: 24px;">
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-md-center col-lg-4"><img src="./assets/logos/icon-moon.svg" alt="dark-mode"></div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Job post-->
+    <div class="container mt-n4">
+        <div class="d-flex d-row" >
+            <div class="col" id="information">
+            </div>
+        </div>
+    </div>
+
+    <!--Job detail-->
+    <div class="container-fluid" id="information">
+    </div>
+
+    <!--Footer-->
+    <div class="container-fluid border" id="form">
+        <div class="d-flex d-row px-lg-5">
+            <div class="col" id="detail">
+            </div>
+        </div>
+    </div>
+
+
+    <script type="module" src="./script.js"></script>
+    <script src="./node_modules/handlebars/dist/handlebars.js"></script>
+    <script id="templateHB" type="text/x-handlebars-template">
+       
+        {{#each jobs}}
+            <!--Tablet and Desktop-->
+            <div class="d-none d-md-block d-lg-block d-xl-block">
+                <div class="d-flex d-row align-items-center rounded-2" id="job-card">
+                    <div class="col-md-2 col-lg-2 text-center text-md-center px-5 py-5" style="background-color: {{this.logoBackground}};">
+                        <img src="{{this.logo}}" alt="logo">
+                    </div>
+                    <div class="col-md-6 col-lg-7 ps-2">
+                        <h1 class="fs-6 fw-bolder" id="position">{{this.company}}</h1>
+                        <p></p>
+                    </div>
+                    <div class="col-md-4 col-lg-3 text-center p-4">
+                        <button class="btn" id="bt-color"><a class="text-decoration-none" id="bt-text" href="{{this.website}}">Company Site</a></button>
+                    </div>
+                </div>
+            </div>
+            <!--Mobile-->
+            <div class=" d.block d-sm-block d-md-none text-center p-4 rounded-2" id="job-card">
+                <div class="d-flex d-row text-center justify-content-center">
+                    <div class="col-2 px-6 py-3 mt-n5 rounded-4" style="background-color: {{this.logoBackground}};">
+                        <img src="{{this.logo}}" alt="">
+                    </div>
+                </div>
+                <div>
+                    <h1 class="fs-6 fw-bolder py-3" id="position">{{this.company}}</h1>
+                    <p></p>
+                </div>
+                <div>
+                    <button class="btn mb-3" id="bt-color"><a class="text-decoration-none" id="bt-text" href="{{this.website}}">Company Site</a></button>
+                </div>
+            </div>
+        {{/each}}
+
+        {{#each jobs}}
+            <div class="col p-4 mt-5 border" id="job-card">
+                <div class="d-flex d-row">
+                    <div class=""><p id="text">{{this.postedAt}}.</p></div>
+                    <div class="ps-2"><p id="text">{{this.contract}}</p></div>
+                </div>
+                
+                <!--Tablet and Desktop-->
+                <div class="d-none d-md-block d-lg-block d-xl-block">
+                    <div class="d-flex d-row align-items-center py-3">
+                        <div class="col-md-9 col-lg-10">
+                            <div><h1 class="fs-4 fw-bolder" id="position">{{this.position}}</h1></div>
+                            <div><h1 class="fs-6 text-primary">{{this.location}}</h1></div>
+                        </div>
+                        <div class="col-md-3 col-lg-2 text-md-end text-lg-start">
+                            <button class="btn btn-primary" style="width: 141px; height:48px;"><a class="fw-bolder text-light text-decoration-none" href="{{this.apply}}">Apply</a></button>
+                        </div>
+                    </div>
+                </div> 
+                <!--Mobile-->
+                <div class="row d.block d-sm-block d-md-none">
+                    <div class="col-12">
+                        <div><h1 class="fs-5 fw-bolder" id="position">{{this.position}}</h1></div>
+                        <div><h1 class="fs-6 text-primary">{{this.location}}</h1></div>
+                    </div>
+                    <div class="col-12 py-3">
+                        <button class="btn btn-primary" style="width: 279px; height:48px;"><a class="fw-bolder text-light text-decoration-none" href="{{this.apply}}">Apply</a></button>
+                    </div>
+                </div>
+
+                <div class="">
+                    <p id="text">{{this.description}}</p>
+                </div>
+                <div class="">
+                    <div><h1 class="fs-6 fw-bolder" id="position">Requirements</h1></div>
+                    <div><p id="text">{{this.requirements.content}}</p></div>
+                    <div><p id="text">{{this.requirements.items}}</p></div>
+                </div>
+                <div class="">
+                    <div><h1 class="fs-6 fw-bolder" id="position">What You Will Do</h1></div>
+                    <div><p id="text">{{this.role.content}}</p></div>
+                    <div><p id="text">{{this.role.items}}</p></div>
+                </div>
+            </div>
+        {{/each}}
+    </script>
+    <script id="footer" type="text/x-handlebars-template">
+        {{#each jobs}}
+        <!--Tablet and Desktop-->
+        <div class="d-none d-md-block d-lg-block d-xl-block">
+            <div class="d-flex d-row py-4 px-lg-5" id="form">
+                <div class="col-md-9 col-lg-10">
+                    <div><h1 class="fs-5 fw-bolder ps-3" id="position">{{this.position}}</h1></div>
+                    <div><h1 class="fs-6 ps-3" id="text">So Digital Inc</h1></div>
+                </div>
+                <div class="col-md-3 col-lg-2 text-center">
+                    <button class="btn btn-primary" style="width: 141px; height:48px;"><a class="fw-bolder text-light text-decoration-none" href="{{this.apply}}">Apply</a></button>
+                </div>
+            </div>
+        </div>
+        <!--Mobile-->
+        <div class="d-flex d-row py-4 px-lg-5 align-items-center justify-content-center d.block d-sm-block d-md-none" id="form">
+            <div class="text-center">
+                <button class="btn btn-primary" style="width: 327px; height:48px;"><a class="fw-bolder text-light text-decoration-none" href="{{this.apply}}">Apply</a></button>
+            </div>
+        </div>
+        {{/each}}
+    </script>
+</body>
+</html>
