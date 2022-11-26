@@ -1,22 +1,11 @@
 import data from './data.json' assert {type: 'json'};
 
-let context = {};
+
 let jobs = [];
 
 for (let i = 0; i < data.length; i++) {
     jobs.push(data[i]);
 }
-
-context["jobs"] = jobs;
-
-const templateElement = document.getElementById("templateHB");
-const templateSource = templateElement.innerHTML;
-const template = Handlebars.compile(templateSource);
-const compiledHtml = template(context);
-document.getElementById("information").innerHTML = compiledHtml;
-//document.getElementById('detail').innerHTML = compiledHtml;
-
-
 
 
 let light = document.querySelectorAll("[id='switch']");
@@ -28,6 +17,7 @@ let textcolor = document.querySelectorAll("[id='text']");
 let inputform = document.querySelectorAll("[id='input-form']");
 let btcolor = document.querySelectorAll("[id='bt-color']");
 let bttext = document.querySelectorAll("[id='bt-text']");
+
 
 for (let i = 0; i < card.length; i++) {
     card[i].style.backgroundColor = "#ffffff";
@@ -47,6 +37,7 @@ for (let i = 0; i < btcolor.length; i++) {
 for (let i = 0; i < bttext.length; i++) {
     bttext[i].style.color = "#5964E0";
 }
+
 
 dark.style.backgroundColor = '#F2F2F2';
 
@@ -88,7 +79,9 @@ for (let i = 0; i < light.length; i++) {
 
 }
 
-/** 
+
+
+
 const myKeysValues = window.location.search;
 const urlParams = new URLSearchParams(myKeysValues);
 
@@ -102,24 +95,30 @@ let context2 = {};
 let job2 = []; 
 
 
-for (let i = 1; i < data.length; i++) {
+/**for (let i = 1; i < data.length; i++) {
     if (param1 === i) {
         job2.push(data[i]);
         //context2["jobs[i]"] = jobs[i];
      }
-}
+}*/
 
 if (jobs[param1]) {
     job2.push(jobs[param1-1]);
 }
 context2["job2"] = job2;
 
-/**const detailElement = document.getElementById("detailHB");
+const cardElement = document.getElementById("cardHB");
+const cardSource = cardElement.innerHTML;
+const cardTemplate = Handlebars.compile(cardSource);
+const cardCompiledHtml = cardTemplate(context2);
+document.getElementById("card").innerHTML = cardCompiledHtml;
+
+
+const detailElement = document.getElementById("detailHB");
 const detailSource = detailElement.innerHTML;
 const detailTemplate = Handlebars.compile(detailSource);
 const detailCompiledHtml = detailTemplate(context2);
 document.getElementById("detail").innerHTML = detailCompiledHtml;
-
 
 const footerElement = document.getElementById("footerHB");
 const footerSource = footerElement.innerHTML;
@@ -127,9 +126,7 @@ const footerTemplate = Handlebars.compile(footerSource);
 const footerCompileHtml = footerTemplate(context2);
 document.getElementById("footer").innerHTML = footerCompileHtml;
 
-console.log(context);
+console.log(context2);
+console.log(jobs);
 
 //console.log(window.location.search);
-
-*/
-

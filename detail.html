@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Devjobs-App</title>
     <link rel="stylesheet" href="./css/main.min.css">
     
 </head>
@@ -47,38 +47,48 @@
 
     <!--Job post-->
     <div class="container mt-n4">
-        <div class="d-flex d-row" >
-            <div class="col" id="information">
+        <div class="d-flex d-row rounded-2" id="form" >
+            <div class="col" id="card">
             </div>
         </div>
     </div>
 
     <!--Job detail-->
-    <div class="container-fluid" id="information">
-    </div>
-
-    <!--Footer-->
-    <div class="container-fluid border" id="form">
-        <div class="d-flex d-row px-lg-5">
+    <div class="container mt-5" id="">
+        <div class="d-flex d-row rounded-2" id="form">
             <div class="col" id="detail">
             </div>
         </div>
+       
+    </div>
+
+    <!--Footer-->
+    <div class="container-fluid" id="form">
+        <div class="container">
+            <div class="d-flex d-row justify-content-between" id="">
+                <div class="col" id="footer">
+                </div>
+            </div>
+        </div>
+       
     </div>
 
 
-    <script type="module" src="./script.js"></script>
+    
+    <!--<script type="module" src="./script.js"></script> -->
+    <script type="module" src="./scriptDetail.js"></script>
     <script src="./node_modules/handlebars/dist/handlebars.js"></script>
-    <script id="templateHB" type="text/x-handlebars-template">
+    <script id="cardHB" type="text/x-handlebars-template">
        
-        {{#each jobs}}
-            <!--Tablet and Desktop-->
+        {{#each job2}}
             <div class="d-none d-md-block d-lg-block d-xl-block">
                 <div class="d-flex d-row align-items-center rounded-2" id="job-card">
                     <div class="col-md-2 col-lg-2 text-center text-md-center px-5 py-5" style="background-color: {{this.logoBackground}};">
                         <img src="{{this.logo}}" alt="logo">
                     </div>
                     <div class="col-md-6 col-lg-7 ps-2">
-                        <h1 class="fs-6 fw-bolder" id="position">{{this.company}}</h1>
+                        <h1 class="fs-5 fw-bolder ps-3" id="position">{{this.company}}</h1>
+                        <p class="ps-3 text-success">{{this.company}}.com</p>
                         <p></p>
                     </div>
                     <div class="col-md-4 col-lg-3 text-center p-4">
@@ -86,7 +96,6 @@
                     </div>
                 </div>
             </div>
-            <!--Mobile-->
             <div class=" d.block d-sm-block d-md-none text-center p-4 rounded-2" id="job-card">
                 <div class="d-flex d-row text-center justify-content-center">
                     <div class="col-2 px-6 py-3 mt-n5 rounded-4" style="background-color:{{this.logoBackground}};">
@@ -102,15 +111,15 @@
                 </div>
             </div>
         {{/each}}
+    </script>
 
-        {{#each jobs}}
-            <div class="col p-4 mt-5 border" id="job-card">
+    <script id="detailHB" type="text/x-handlebars-template">
+        {{#each job2}}
+            <div class="col p-4 mt-5" id="job-card">
                 <div class="d-flex d-row">
                     <div class=""><p id="text">{{this.postedAt}}.</p></div>
                     <div class="ps-2"><p id="text">{{this.contract}}</p></div>
                 </div>
-                
-                <!--Tablet and Desktop-->
                 <div class="d-none d-md-block d-lg-block d-xl-block">
                     <div class="d-flex d-row align-items-center py-3">
                         <div class="col-md-9 col-lg-10">
@@ -122,7 +131,6 @@
                         </div>
                     </div>
                 </div> 
-                <!--Mobile-->
                 <div class="row d.block d-sm-block d-md-none">
                     <div class="col-12">
                         <div><h1 class="fs-5 fw-bolder" id="position">{{this.position}}</h1></div>
@@ -132,7 +140,6 @@
                         <button class="btn btn-primary" style="width: 279px; height:48px;"><a class="fw-bolder text-light text-decoration-none" href="{{this.apply}}">Apply</a></button>
                     </div>
                 </div>
-
                 <div class="">
                     <p id="text">{{this.description}}</p>
                 </div>
@@ -149,26 +156,24 @@
             </div>
         {{/each}}
     </script>
-    <script id="footer" type="text/x-handlebars-template">
-        {{#each jobs}}
-        <!--Tablet and Desktop-->
-        <div class="d-none d-md-block d-lg-block d-xl-block">
-            <div class="d-flex d-row py-4 px-lg-5" id="form">
-                <div class="col-md-9 col-lg-10">
-                    <div><h1 class="fs-5 fw-bolder ps-3" id="position">{{this.position}}</h1></div>
-                    <div><h1 class="fs-6 ps-3" id="text">So Digital Inc</h1></div>
-                </div>
-                <div class="col-md-3 col-lg-2 text-center">
-                    <button class="btn btn-primary" style="width: 141px; height:48px;"><a class="fw-bolder text-light text-decoration-none" href="{{this.apply}}">Apply</a></button>
+    <script id="footerHB" type="text/x-handlebars-template">
+        {{#each job2}}
+            <div class="d-none d-md-block d-lg-block d-xl-block">
+                <div class="d-flex d-row py-4" id="form">
+                    <div class="col-md-9 col-lg-10">
+                        <div><h1 class="fs-5 fw-bolder" id="position">{{this.position}}</h1></div>
+                        <div><h1 class="fs-6" id="text">So Digital Inc</h1></div>
+                    </div>
+                    <div class="col-md-3 col-lg-2 text-center">
+                        <button class="btn btn-primary" style="width: 141px; height:48px;"><a class="fw-bolder text-light text-decoration-none" href="{{this.apply}}">Apply</a></button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!--Mobile-->
-        <div class="d-flex d-row py-4 px-lg-5 align-items-center justify-content-center d.block d-sm-block d-md-none" id="form">
-            <div class="text-center">
-                <button class="btn btn-primary" style="width: 327px; height:48px;"><a class="fw-bolder text-light text-decoration-none" href="{{this.apply}}">Apply</a></button>
+            <div class="d-flex d-row py-4 px-lg-5 align-items-center juseachy-content-center d.block d-sm-block d-md-none" id="form">
+                <div class="text-center">
+                    <button class="btn btn-primary" style="width: 327px; height:48px;"><a class="fw-bolder text-light text-decoration-none" href="{{this.apply}}">Apply</a></button>
+                </div>
             </div>
-        </div>
         {{/each}}
     </script>
 </body>
