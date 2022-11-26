@@ -42,11 +42,6 @@ for (let i = 0; i < bttext.length; i++) {
 dark.style.backgroundColor = '#F2F2F2';
 
 
-
-//let d = card.forEach(a => {
-   // a.style.backgroundColor = "white";
-   // });
-
 for (let i = 0; i < light.length; i++) {
     light[i].addEventListener('click', () => {
         
@@ -94,14 +89,6 @@ console.log(param2);
 let context2 = {};
 let job2 = []; 
 
-
-/**for (let i = 1; i < data.length; i++) {
-    if (param1 === i) {
-        job2.push(data[i]);
-        //context2["jobs[i]"] = jobs[i];
-     }
-}*/
-
 if (jobs[param1]) {
     job2.push(jobs[param1-1]);
 }
@@ -126,7 +113,6 @@ const footerTemplate = Handlebars.compile(footerSource);
 const footerCompileHtml = footerTemplate(context2);
 document.getElementById("footer").innerHTML = footerCompileHtml;
 
-console.log(context2);
-console.log(jobs);
+//console.log(context2);
+//console.log(jobs);
 
-//console.log(window.location.search);
